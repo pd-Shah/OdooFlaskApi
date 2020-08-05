@@ -15,3 +15,18 @@ pd@dell:~/Dev/Gits/odoo-api$ sudo docker build -t api .
 pd@dell:~/Dev/Gits/odoo-api$ sudo docker run api
 
 ```
+
+### run tests
+there are some unit tests in the project, to run and check the project healthy status run following command:
+```bash
+(venv) pd@dell:~/Dev/Gits/odoo-api$ python -m pytest
+=============================================================================================== test session starts ===============================================================================================
+platform linux -- Python 3.7.5, pytest-6.0.1, py-1.9.0, pluggy-0.13.1
+rootdir: /home/pd/Dev/Gits/odoo-api
+collected 1 item                                                                                                                                                                                                  
+
+app/test/check_test.py .                                                                                                                                                                                    [100%]
+
+================================================================================================ 1 passed in 0.13s ================================================================================================
+
+```

@@ -1,16 +1,17 @@
 image: docker
 
 stages:
-  - test
+  - tests
   - deploy
 
 before_script:
   - echo "before script running..."
 
 test:
-  stage: test
+  stage: tests
   script:
-    - echo "test stage"
+    - echo "tests stage"
+    - python -m pytest
     - docker build -t api .
     - docker run api
 
