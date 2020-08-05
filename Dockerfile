@@ -1,7 +1,8 @@
 FROM python:3-slim
 ADD . /odoo-api
 WORKDIR /odoo-api
-RUN pip install --trusted-host pypi.python.org -r requirements.txt
+RUN python -m pip install --upgrade pip
+RUN pip install -r requirements.txt
 ENV FLASK_APP=app
-ENV FLASK_DEV=development
-CMD flask run -h 0.0.0.0
+ENV FLASK_ENV=development
+CMD flask run
