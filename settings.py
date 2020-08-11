@@ -4,6 +4,10 @@ from os import environ
 class Config:
     DEBUG = False
     TESTING = False
+    O_URL = 'http://192.168.4.6:8069'
+    O_DB = 'Rakhshan2'
+    O_USERNAME = 'rakhshan.harifi689@gmail.com'
+    O_PASSWORD = 'Ehs@n2020'
 
 
 class ProductionConfig(Config):

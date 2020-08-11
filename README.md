@@ -9,11 +9,8 @@ in order to run this docker first install docker from [here](https://docs.docker
 Any project configuration will be done automatically, just run:
 
 ```
-
-pd@dell:~/Dev/Gits/odoo-api$ sudo docker build -t api .
-
-pd@dell:~/Dev/Gits/odoo-api$ sudo docker run api
-
+pd@dell:~/Dev/Gits/odoo-api$ chmod +x start.sh 
+pd@dell:~/Dev/Gits/odoo-api$ ./start.sh 
 ```
 
 ### run tests

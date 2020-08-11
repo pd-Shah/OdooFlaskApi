@@ -1,5 +1,7 @@
 from marshmallow import Schema, fields
 
 
-class User(Schema):
+class PortalUser(Schema):
     name = fields.Str()
+    login = fields.Str()
+    email = fields.Email()
