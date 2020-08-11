@@ -6,8 +6,7 @@ class Config:
     TESTING = False
     O_URL = 'http://192.168.4.6:8069'
     O_DB = 'Rakhshan2'
-    O_USERNAME = 'rakhshan.harifi689@gmail.com'
-    O_PASSWORD = 'Ehs@n2020'
+    SECRET_KEY = b'6hc/_gsh,./;2ZZx3c6_s,1//'
 
 
 class ProductionConfig(Config):

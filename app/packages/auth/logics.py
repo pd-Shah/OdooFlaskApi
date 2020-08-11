@@ -1,6 +1,6 @@
 from xmlrpc.client import ServerProxy
-from flask import current_app
-from .schemas import PortalUser
+from flask import current_app, session
+from .schemas import PortalUser, LoginUser
 
 
 def odoo_version(endpoint='{}/xmlrpc/2/common', ):
@@ -9,15 +9,21 @@ def odoo_version(endpoint='{}/xmlrpc/2/common', ):
     return common.version()
 
 
-def odoo_login(endpoint='{}/xmlrpc/2/common', ):
+def odoo_login(user, endpoint='{}/xmlrpc/2/common', ):
+    session.pop('username', None)
+    session.pop('password', None)
+    login_user = LoginUser()
+    login_user = login_user.dump(user)
+    session['username'] = login_user['username']
+    session['password'] = login_user['password']
     base_url = current_app.config['O_URL']
     common = ServerProxy(endpoint.format(base_url))
     uid = common.authenticate(
         current_app.config['O_DB'],
-        current_app.config['O_USERNAME'],
-        current_app.config['O_PASSWORD'],
+        session['username'],
+        session['password'],
         {}, )
-    current_app.config['O_UID'] = uid
+    session['uid'] = uid
     return uid
 
 
@@ -28,8 +34,8 @@ def odoo_create_portal_user(user_obj, endpoint='{}/xmlrpc/2/object', ):
     models = ServerProxy(endpoint.format(base_url))
     id = models.execute_kw(
         current_app.config['O_DB'],
-        current_app.config['O_UID'],
-        current_app.config['O_PASSWORD'],
+        session['uid'],
+        session['password'],
         'integrated_user',
         'create',
         [user_obj], )

@@ -22,10 +22,11 @@ def version():
     return jsonify(status=200, message=odoo_server_info), 200
 
 
-@bp.route('/login')
+@bp.route('/login', methods=["POST", ])
 def login():
+    user = request.get_json()
     try:
-        uid = odoo_login()
+        uid = odoo_login(user)
     except Exception as e:
         abort(status=400, )
     return jsonify(status=200, message={'uid': uid, }), 200
