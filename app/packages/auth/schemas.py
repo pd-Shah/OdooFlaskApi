@@ -9,4 +9,5 @@ class LoginUser(Schema):
 class PortalUser(Schema):
     name = fields.Str()
     login = fields.Str()
-    email = fields.Email()
+    mobile = fields.Str()
+    tz = fields.Str()
