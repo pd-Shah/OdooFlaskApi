@@ -15,8 +15,8 @@ pd@dell:~/Dev/Gits/odoo-api$ ./start.sh
 
 ### stop project 
 ```bash
-docker stop $(docker ps -a -q)
-docker rm $(docker ps -a -q)
+sudo -i
+docker rm -f $(docker ps -a -q)
 ```
 ### run tests
 there are some unit tests in the project, to run and check the project healthy status run following command:
