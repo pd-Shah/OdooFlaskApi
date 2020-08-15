@@ -9,8 +9,9 @@ class LoginUser(Schema):
 class PortalUser(Schema):
     name = fields.Str(required=True, )
     login = fields.Str(required=True, )
-    mobile = fields.Str(required=True, )
+    phone_number = fields.Str(required=True, )
     tz = fields.Str(required=True, )
     password = fields.Str(required=True, )
+    country_code = fields.Str(required=True, )
 
 
