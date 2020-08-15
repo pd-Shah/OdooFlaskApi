@@ -11,3 +11,4 @@ class PortalUser(Schema):
     login = fields.Str()
     mobile = fields.Str()
     tz = fields.Str()
+    password = fields.Str()
